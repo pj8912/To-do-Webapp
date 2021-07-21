@@ -5,12 +5,6 @@ var task = document.getElementById('task').value;
 
 
 
-
-
-
-// tbtn.onclick = uploadToDo();
-
-
 function uploadToDo() {
 
     var task = document.getElementById('task').value;
@@ -22,8 +16,10 @@ function uploadToDo() {
             data: task
         })
     })
-    task = '';
+
     fetchToDo();
+    // fetchDoing();
+    // fetchDone();
 
 }
 
@@ -45,7 +41,7 @@ function fetchToDo() {
                     <li class="list-group-item">
                         <h5>no data available 
                             
-          <button   type="submit" class="btn ml-1 w-auto" id="deletebtn"  onclick="deleteTodo(${response[i].id})" >
+          <button   type="submit" class="btn ml-1 w-auto bg-light" id="deletebtn"  onclick="deleteTodo(${response[i].id})" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
           </svg> 
@@ -64,15 +60,15 @@ function fetchToDo() {
      
         <span>
           
-<a class="btn ml-1 w-auto" onclick = "uploadDoing(${response[i].id})">
+<button type="submit" class="btn ml-1 w-auto bg-light" onclick = "uploadDoing(${response[i].id})">
        <svg  id="donrtask" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
               <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
           </svg>
-        </a>
+        </button>
           
 
     
-          <button   class="btn ml-2 w-auto" id="deletebtn"  onclick="deleteDone(${response[i].id})" >
+          <button type="submit"  class="btn ml-2 w-auto bg-light" id="deletebtn"  onclick="deleteTodo(${response[i].id})" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
           </svg> 
@@ -97,7 +93,7 @@ function deleteTodo(btnval) {
 
         method: "POST",
         body: JSON.stringify({
-            delete: btnval
+            data: btnval
         })
     });
 
@@ -119,8 +115,9 @@ function uploadDoing(id) {
         })
     })
 
-    fetchToDo();
     fetchDoing();
+
+
 }
 
 
@@ -146,7 +143,7 @@ function fetchDoing() {
                     <li class="list-group-item">
                         <h5>no data available
                             
-          <button type="submit" class="btn ml-1 w-auto" id="deletebtn"  onclick="deleteDoing(${response[i].id})" >
+          <button type="submit" class="btn ml-1 w-auto bg-light" id="deletebtn"  onclick="deleteDoing(${response[i].id})" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
           </svg> 
@@ -170,15 +167,15 @@ function fetchDoing() {
         <span>
           
       
-          <a class="btn ml-1 w-auto" onclick = "uploadDone(${response[i].id})">
+          <button type="submit" class="btn ml-1 w-auto bg-light" onclick = "uploadDone(${response[i].id})">
        <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
               <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-          </svg>
+          </button >
         </a>
           
 
     
-          <button  class="btn ml-1 w-auto" id="deletebtn"  onclick="deleteDoing(${response[i].id})" >
+          <button  class="btn ml-1 w-auto bg-light" id="deletebtn"  onclick="deleteDoing(${response[i].id})" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
           </svg> 
@@ -193,8 +190,23 @@ function fetchDoing() {
             }
             document.querySelector('.doing-list').innerHTML = output;
         })
+    fetchToDo();
 }
 
+function uploadDone(id) {
+    fetch("src/doneupload.php", {
+
+        method: "POST",
+
+        body: JSON.stringify({
+            id: id
+        })
+    })
+
+    // fetchDoing();
+    fetchDone();
+    // fetchToDo();
+}
 
 function deleteDoing(btnval) {
 
@@ -210,19 +222,6 @@ function deleteDoing(btnval) {
 }
 
 
-function uploadDone(id) {
-    fetch("src/doneupload.php", {
-
-        method: "POST",
-
-        body: JSON.stringify({
-            id: id
-        })
-    })
-
-    fetchDoing();
-    fetchDone();
-}
 
 function fetchDone() {
     fetch('src/donefetch.php')
@@ -233,20 +232,13 @@ function fetchDone() {
             let output = '';
 
             for (let i in response) {
-                if (response[i] == null) {
-                    output += `
-                    <li class="text-light list-group-item">
-                        fuck off
-                    </li>
-                `;
-                }
 
                 if (response[i].tasks == null || response[i].tasks == '') {
                     output += `
                     <li class="list-group-item">
                         <h5>no data available
                             
-          <button type="submit" class="btn ml-1 w-auto" id="deletebtn"  onclick="deleteDone(${response[i].id})" >
+          <button type="submit" class="btn ml-1 w-auto bg-light" id="deletebtn"  onclick="deleteDone(${response[i].id})" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
           </svg> 
@@ -271,7 +263,7 @@ function fetchDone() {
         <span>         
 
     
-          <button  class="btn ml-1 w-auto"   onclick="deleteDone(${response[i].id})" >
+          <button  class="btn ml-1 w-auto bg-light"   onclick="deleteDone(${response[i].id})" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
           </svg> 
@@ -287,7 +279,8 @@ function fetchDone() {
             }
             document.querySelector('.done-list').innerHTML = output;
         })
-}
+        fetchDoing();
+    }
 
 
 function deleteDone(btnval) {
