@@ -203,7 +203,7 @@ function uploadDone(id) {
         })
     })
 
-    // fetchDoing();
+    fetchDoing();
     fetchDone();
     // fetchToDo();
 }
